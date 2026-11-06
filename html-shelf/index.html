@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>HTML Shelf</title>
+  <meta name="description" content="Keep HTML files on your phone and open them with a tap.">
+  <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161614" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="HTML Shelf">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="home">
+    <header class="top">
+      <h1>HTML Shelf</h1>
+      <button id="settingsBtn" class="icon-btn" type="button" aria-label="Settings">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>
+      </button>
+    </header>
+
+    <div id="installHint" class="hint" hidden>
+      <p><strong>Install this first.</strong> Tap Share, then Add to Home Screen. Files added here in Safari won't appear in the installed app.</p>
+      <button id="hintClose" class="icon-btn" type="button" aria-label="Dismiss">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <input id="search" class="search" type="search" placeholder="Search your files" aria-label="Search your files" autocomplete="off" hidden>
+
+    <section id="empty" class="empty" hidden>
+      <h2>Your shelf is empty</h2>
+      <p>Add an HTML file once, then open it from here any time.</p>
+    </section>
+
+    <ul id="list" class="list"></ul>
+    <p id="noMatch" class="no-match" hidden>No files match your search.</p>
+
+    <div class="add-bar">
+      <button id="addBtn" class="primary" type="button">Add HTML file</button>
+    </div>
+    <input id="picker" class="visually-hidden" type="file" accept=".html,.htm,.xhtml,text/html,application/xhtml+xml" multiple tabindex="-1" aria-hidden="true">
+  </main>
+
+  <section id="viewer" hidden>
+    <div id="frameHost" class="frame-host"></div>
+    <button id="backBtn" class="float-btn" type="button" aria-label="Back to your files">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+  </section>
+
+  <dialog id="sheet" class="sheet"></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
